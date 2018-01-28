@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- client -->
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Manully Submit Form</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/responsive.css">
+    <script src="./assets/js/jquery-3.2.1.min.js"></script>
+    <script src="./assets/js/main.js"></script>
+</head>
+
+<body>
+  <header>
+    <br><br>
+  </header>
+    <div class="container">
+        <h1>Submit Client Form | 客户录入系统</h1>
+        <span class="badge badge-primary">New | 新功能</span>
+        <span class="badge badge-secondary">Reno Compass | 优家网</span>
+        <span class="badge badge-pill badge-warning">Admin Use Only | 仅限管理员</span>
+        <form id="reno-main-form" onsubmit ="return checkValid()" action="./submit_process.php"  method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="form-group col-sm-6 col-md-6">
+                    <label for="name">姓名</label>
+                    <input type="text" class="form-control" name="cli_name" id="name" placeholder="姓名">
+                    <span class="verify" id="name_msg"></span>
+                </div>
+                <div class="form-group col-sm-6 col-md-6">
+                    <label for="phone">电话</label>
+                    <input type="text" class="form-control" name="cli_number" id="phone" placeholder="电话">
+                    <span class="verify" id="phone_msg"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-6 col-md-6">
+                    <label for="email">邮箱地址</label>
+                    <input type="text" class="form-control" name="cli_email" id="email" placeholder="邮箱">
+                    <span class="verify" id="email_msg"></span>
+                </div>
+                <div class="form-group col-sm-6 col-md-6">
+                     <label for="wechat">微信号</label>
+                    <input type="text" class="form-control" name="cli_wechat" id="wechat" placeholder="微信号">
+                     <span class="verify" id="wechat_msg"> </span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-6 col-md-6">
+                    <label for="condo">是否为Condo</label>
+                    <select class="form-control" name="cli_condo" id="condo">
+                        <option></option>
+                        <option>是</option>
+                        <option>否</option>
+                    </select>
+                    <span class="verify" id="condo_msg"></span>
+                </div>
+                <div class="form-group col-sm-6 col-md-6">
+                    <label for="source">来源</label>
+                    <select class="form-control" name="cli_source" id="source">
+                        <option></option>
+                        <option>Google_Ads</option>
+                        <option>Facebook</option>
+                        <option>微信</option>
+                        <option>YouTube</option>
+                        <option>朋友介绍</option>
+                        <option>Community_Events</option>
+                        <option>Home_Show</option>
+                        <option>草丛广告</option>
+                        <option>电台广播</option>
+                        <option>宣传册</option>
+                        <option>Other</option>
+                    </select>
+                     <span class="verify" id="source_msg"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-6 col-md-6">
+                    <label for="target_marketing">客户是华人还是西人</label>
+                    <select class="form-control" name="cli_target_marketing" id="target_marketing">
+                        <option></option>
+                        <option>华人</option>
+                        <option>西人</option>
+                    </select>
+                    <span class="verify" id="target_marketing_msg"></span>
+                </div>
+                <div class="form-group col-sm-6 col-md-6">
+                    <label for="price_requirement">预期单的价格</label>
+                    <select class="form-control" name="cli_price_requirement" id="price_requirement">
+                        <option></option>
+                        <option>0</option>
+                        <option>2000</option>
+                        <option>5000</option>
+                        <option>8000</option>
+                        <option>10000</option>
+                        <option>50000</option>
+                        <option>100000</option>
+                        <option>无要求</option>
+                    </select>
+                    <span class="verify" id="price_requirement_msg"></span>
+                </div>
+            </div>      
+            <div class="row">
+                <div class="form-group col-sm-6 col-md-6">
+                    <label for="business">是否是商业装修</label>
+                    <select class="form-control" name="cli_business" id="business">
+                        <option></option>
+                        <option>是</option>
+                        <option>否</option>
+                    </select>
+                    <span class="verify" id="business_msg"></span>
+                </div>
+                 <div class="form-group col-sm-6 col-md-6">
+                    <label for="price_range">价格偏向</label>
+                    <select class="form-control" name="cli_price_prefer" id="price_range">
+                        <option></option>
+                        <option>高</option>
+                        <option>中</option>
+                        <option>低</option>
+                    </select>
+                    <span class="verify" id="price_range_msg"></span>
+                </div>
+            </div>
+            <div class="row">
+                <div class="form-group col-sm-12 col-md-12">可以开工的时间</div>
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_january" type="checkbox" id = "Jan_check"/>  January    </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_february" type="checkbox" id = "Feb_check"/>  February  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_march" type="checkbox" id = "Mar_check"/>  March  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_april" type="checkbox" id = "Apr_check"/>  April  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_may" type="checkbox" id = "May_check"/>  May  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_june" type="checkbox" id = "Jun_check"/>  June  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_july" type="checkbox" id = "Jul_check"/>  July  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_auguest" type="checkbox" id = "Aug_check"/>  Auguest  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_september" type="checkbox" id = "Sep_check"/>  September  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_october" type="checkbox" id = "Oct_check"/>  October  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_november" type="checkbox" id = "Nov_check"/>  November  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_december" type="checkbox" id = "Dec_check"/>  December  </label>
+            </div>
+              <span class="verify" id="check_month_msg"></span>
+            <div class="row">
+                <div class="form-group col-sm-12 col-md-12">服务范围（地区）多选</div>
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_ajax" type="checkbox" id = "area1"/>  Ajax  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_aurora" type="checkbox" id = "area2"/>  Aurora  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_brampton" type="checkbox" id = "area3"/>  Brampton  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_barrie" type="checkbox" id = "area4"/>  Barrie  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_burlington" type="checkbox" id = "area5"/>  Burlington  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_caledon" type="checkbox" id = "area6"/>  Caledon  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_clarington" type="checkbox" id = "area7"/>  Clarington  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_east_gwillimbury" type="checkbox" id = "area8"/>  East Gwillimbury  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_east_etobicoke" type="checkbox" id = "area9"/>  Etobicoke  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_east_east_york" type="checkbox" id = "area10"/>  East York  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_georgina" type="checkbox" id = "area11"/>  Georgina  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_halton_hills" type="checkbox" id = "area12"/>  Halton Hills  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_king" type="checkbox" id = "area13"/>  King  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_london" type="checkbox" id = "area14"/>  London  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_markham" type="checkbox" id = "area15"/>  Markham  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_milton" type="checkbox" id = "area16"/>  Milton  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_mississauga" type="checkbox" id = "area17"/>  Mississauga  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_newmarket" type="checkbox" id = "area18"/>  Newmarket  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_north_york" type="checkbox" id = "area19"/>  North York  </label>
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_niagara_falls" type="checkbox" id = "area20"/>  Niagara Falls  </label>
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_oakville" type="checkbox" id = "area21"/>  Oakville  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_oshawa" type="checkbox" id = "area22"/>  Oshawa  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_pickering" type="checkbox" id = "area23"/>  Pickering  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_richmond_hill" type="checkbox" id = "area24"/>  Richmond Hill  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_scugog" type="checkbox" id = "area25"/>  Scugog  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_scarborough" type="checkbox" id = "area26"/>  Scarborough  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_stcatharines" type="checkbox" id = "area27"/>  St. Catharines  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_toronto" type="checkbox" id = "area28"/>  Toronto DownTown   </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_thornhill" type="checkbox" id = "area29"/>  Thornhill   </label>
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_uxbridge" type="checkbox" id = "area30"/>  Uxbridge  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_vaughan" type="checkbox" id = "area31"/>  Vaughan  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_whitby" type="checkbox" id = "area32"/>  Whitby  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_whitchurch_stouffville" type="checkbox" id = "area33"/>  
+                        Whitchurch-Stouffville  </label> 
+            </div>
+                 <span class="verify" id="check_area_msg"></span>
+            <div class="row">
+                <div class="form-group col-sm-12 col-md-12">服务项目</div>
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_sunroom" type="checkbox" id = "service1"/>  阳光房（防风门）  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_addition" type="checkbox" id = "service2"/>  加建  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_basement" type="checkbox" id = "service3"/>  地下室装修  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_add_bathroom" type="checkbox" id = "service4"/>  增加卫生间  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_renew_bathroom" type="checkbox" id = "service5"/>  翻新卫生间  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_electric_commercial" type="checkbox" id = "service6"/>  电工（商业）  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_electric_resident" type="checkbox" id = "service7"/>  电工（住宅）  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_repair_flooring" type="checkbox" id = "service8"/>  修补地板  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_replace_flooring" type="checkbox" id = "service9"/>  换地板  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_garage_door" type="checkbox" id = "service10"/>  车库门  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_small_fixing" type="checkbox" id = "service11"/>  小修小补  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_repair_appliances" type="checkbox" id = "service12"/>  家电维修  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_air_condition" type="checkbox" id = "service13"/>  冷暖气  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_interior_design_contractor" type="checkbox" id = "service14"/>  室内设计（带装修）  </label>
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_interior_design" type="checkbox" id = "service15"/>  室内设计（不带装修）  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_staging" type="checkbox" id = "service16"/>  Staging  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_counter_top" type="checkbox" id = "service17"/>  Counter Top  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_cabinet" type="checkbox" id = "service18"/>  橱柜  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_kitchen_renovation" type="checkbox" id = "service19"/>  厨房装修  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_cabinet_refinishing" type="checkbox" id = "service20"/>  橱柜refinishing  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_lawn_maintance" type="checkbox" id = "service21"/>  花草维护  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_fell_trees" type="checkbox" id = "service22"/>  砍树  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_tile_work" type="checkbox" id = "service23"/>  铺砖铺石头  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_pitch" type="checkbox" id = "service24"/>  沥青  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_cement" type="checkbox" id = "service25"/>  水泥  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_painting" type="checkbox" id = "service26"/>  油漆粉刷  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_plumbing_commercial" type="checkbox" id = "service27"/>  水管（商业）  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_plumbing_residence" type="checkbox" id = "service28"/>  水管（住宅）  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_interior_renovation" type="checkbox" id = "service29"/>  室内装修  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_fixing_repairing_roofing" type="checkbox" id = "service30"/>  修补和清理屋顶  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_replace_roofing" type="checkbox" id = "service31"/>  换屋顶  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_outside_windows_doors" type="checkbox" id = "service32"/>  室外门窗  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_inside_windows_doors" type="checkbox" id = "service33"/>  室内门窗  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_increase_size_windows" type="checkbox" id = "service34"/>  改大窗户  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_screen_windows" type="checkbox" id = "service35"/>  纱窗  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_skylight" type="checkbox" id = "service36"/>  开天窗  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_curtain" type="checkbox" id = "service37"/>  窗帘  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_expelling_parasite" type="checkbox" id = "service38"/>  驱虫  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_pet_control" type="checkbox" id = "service39"/>  去动物  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_leak_repairing" type="checkbox" id = "service40"/>  地库补漏  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_cleaning" type="checkbox" id = "service41"/>  清洁服务  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_schedule_cleaning" type="checkbox" id = "service42"/>  清洁服务（定期）  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_pipe_cleaning" type="checkbox" id = "service43"/>  管道清洁  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_close_swimming_pool" type="checkbox" id = "service44"/>  开关泳池  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_cleaning_repair_swimming_pool" type="checkbox" id = "service45"/>  清理/维护泳池  </label>
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_snow_removal" type="checkbox" id = "service46"/>  铲雪  </label> 
+                    <label class="form-group col-sm-3 col-md-3"><input name="cli_apply_permit" type="checkbox" id = "service47"/>  申请permit  </label> 
+                    
+            </div>
+            <span class="verify" id="check_service_msg"></span>
+            <br>
+            <button type="submit" class="btn btn-primary reno-send-form">Confirm</button>
+        </form>
+    </div>
+    
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="./assets/js/popper.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+    <script src="./assets/js/smtp.js"></script>
+</body>
+</html>
